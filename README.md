@@ -1,6 +1,6 @@
 # Academic Personal Homepage
 
-This is an academic personal homepage template inspired by the design of [Rong Gu's homepage](https://cs.nju.edu.cn/gurong/index.htm) at Nanjing University.
+This is an academic personal homepage template inspired by the design of [Bangbang Ren's homepage](https://renbangbang.github.io) at National University of Defense Technology.
 
 ## Features
 
