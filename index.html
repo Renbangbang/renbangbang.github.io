@@ -576,17 +576,27 @@
 
     <div class="container">
         <!-- Profile Header -->
-        <header class="profile-header">
-            <h1>Bangbang Ren</h1>
-            <div class="profile-name-cn">任棒棒</div>
-            <div class="profile-title">国防科技大学 · 副教授 · 硕士生导师</div>
-            <a href="mailto:renbangbang11@nudt.edu.cn" class="profile-contact">
-                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: middle; margin-right: 0.25rem;">
-                    <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-                </svg>
-                renbangbang11[at]nudt.edu.cn
-            </a>
-        </header>
+<header class="profile-header" style="display: flex; align-items: flex-start; gap: 2.5rem; margin-bottom: 3rem; padding-bottom: 2rem; border-bottom: 2px solid var(--border-color);">
+    
+    <!-- 左侧照片 -->
+    <div class="profile-photo-wrapper" style="flex-shrink: 0;">
+        <img src="img/photo.jpg" alt="Bangbang Ren" class="profile-photo-square" style="width: 180px; height: 225px; object-fit: cover; border-radius: 4px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border: 1px solid #e5e7eb; display: block;">
+    </div>
+    
+    <!-- 右侧信息 -->
+    <div class="profile-info-text" style="flex: 1; padding-top: 0.5rem;">
+        <h1 style="font-size: 2.25rem; margin-bottom: 0.5rem; text-align: left;">Bangbang Ren</h1>
+        <div style="font-size: 1.25rem; color: var(--text-secondary); margin-bottom: 1rem; font-family: 'Noto Serif SC', serif;">任棒棒</div>
+        <div style="font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 1.5rem; font-weight: 500;">国防科技大学 · 副教授 · 硕士生导师</div>
+        
+        <a href="mailto:renbangbang11@nudt.edu.cn" class="profile-contact" style="display: inline-flex; align-items: center; gap: 0.5rem; color: var(--primary-color); text-decoration: none; font-weight: 500; padding: 0.5rem 1rem; border: 1px solid var(--border-color); border-radius: var(--radius); transition: all 0.3s ease; background: white;">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+            </svg>
+            renbangbang11[at]nudt.edu.cn
+        </a>
+    </div>
+</header>
 
         <!-- Short Biography -->
         <section class="section" id="biography">
