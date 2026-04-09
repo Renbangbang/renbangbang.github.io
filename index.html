@@ -6,10 +6,6 @@
     <meta name="description" content="Bangbang Ren - Associate Professor at National University of Defense Technology. Research interests include Networked Distributed System, AI-Augmented SoS and Intelligent Decision.">
     <meta name="author" content="Bangbang Ren">
     
-    <!-- Open Graph -->
-    <meta property="og:title" content="Bangbang Ren (任棒棒) - NUDT">
-    <meta property="og:description" content="Associate Professor at National University of Defense Technology">
-    
     <title>Bangbang Ren (任棒棒) - National University of Defense Technology</title>
     
     <!-- Google Fonts -->
@@ -21,21 +17,21 @@
     <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
     
     <style>
-        /* ===== CSS Reset & Variables ===== */
+        /* ===== CSS Variables ===== */
         :root {
             --primary-color: #1e3a8a;
             --primary-light: #3b82f6;
             --accent-color: #dc2626;
             --text-primary: #1f2937;
             --text-secondary: #6b7280;
-            --bg-body: #f8fafc;
+            --bg-body: #fafafa;
             --bg-card: #ffffff;
             --border-color: #e5e7eb;
-            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
             --radius: 8px;
-            --sidebar-width: 280px;
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --max-width: 800px;
+            --transition: all 0.3s ease;
         }
         
         * {
@@ -54,129 +50,83 @@
             color: var(--text-primary);
             background-color: var(--bg-body);
             -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
         }
         
-        /* ===== Layout Structure ===== */
-        .container {
-            display: flex;
-            min-height: 100vh;
-            max-width: 1400px;
-            margin: 0 auto;
-            background: var(--bg-body);
-        }
-        
-        /* ===== Sidebar ===== */
-        .sidebar {
-            width: var(--sidebar-width);
-            background: var(--bg-card);
-            border-right: 1px solid var(--border-color);
-            padding: 2.5rem 2rem;
-            position: fixed;
-            height: 100vh;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
+        /* ===== Top Navigation Bar ===== */
+        .top-nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
             z-index: 100;
-            box-shadow: var(--shadow);
+            padding: 1rem 0;
         }
         
-        .nav-header h2 {
-            font-size: 1.5rem;
+        .nav-container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-brand {
             font-weight: 700;
             color: var(--primary-color);
-            margin-bottom: 0.5rem;
-            font-family: 'Inter', sans-serif;
-            letter-spacing: -0.025em;
-        }
-        
-        .nav-title-cn {
-            font-size: 0.875rem;
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
+            font-size: 1.25rem;
+            text-decoration: none;
             font-family: 'Noto Serif SC', serif;
         }
         
-        .nav-menu {
+        .nav-links {
+            display: flex;
+            gap: 2rem;
             list-style: none;
-            margin-top: 1rem;
         }
         
-        .nav-menu li {
-            margin-bottom: 0.5rem;
-        }
-        
-        .nav-menu a {
-            display: block;
-            padding: 0.75rem 1rem;
+        .nav-links a {
             text-decoration: none;
             color: var(--text-secondary);
+            font-size: 0.9rem;
             font-weight: 500;
-            border-radius: var(--radius);
             transition: var(--transition);
-            font-size: 0.95rem;
+            position: relative;
         }
         
-        .nav-menu a:hover,
-        .nav-menu a.active {
-            background-color: #eff6ff;
+        .nav-links a:hover {
             color: var(--primary-color);
-            transform: translateX(4px);
         }
         
-        .nav-menu a.active {
-            font-weight: 600;
-            border-left: 3px solid var(--primary-color);
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: width 0.3s ease;
         }
         
-        .sidebar-footer {
-            margin-top: auto;
-            padding-top: 2rem;
-            border-top: 1px solid var(--border-color);
-            font-size: 0.875rem;
-            color: var(--text-secondary);
+        .nav-links a:hover::after {
+            width: 100%;
         }
         
-        .contact-sidebar {
-            margin-top: 1rem;
-        }
-        
-        .contact-sidebar p {
-            font-size: 0.8rem;
-            margin-bottom: 0.5rem;
-            word-break: break-all;
-        }
-        
-        /* ===== Main Content ===== */
-        .content {
-            flex: 1;
-            margin-left: var(--sidebar-width);
-            padding: 0;
-            background: var(--bg-body);
-        }
-        
-        main {
-            max-width: 900px;
-            padding: 3rem 4rem;
+        /* ===== Main Container ===== */
+        .container {
+            max-width: var(--max-width);
             margin: 0 auto;
+            padding: 0 2rem 4rem;
         }
         
         /* ===== Profile Header ===== */
         .profile-header {
+            padding: 4rem 0 3rem;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
             margin-bottom: 3rem;
-            padding-bottom: 2rem;
-            border-bottom: 2px solid var(--border-color);
-            position: relative;
-        }
-        
-        .profile-header::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 100px;
-            height: 2px;
-            background: var(--primary-color);
         }
         
         .profile-header h1 {
@@ -187,25 +137,40 @@
             letter-spacing: -0.02em;
         }
         
-        .profile-title {
+        .profile-name-cn {
             font-size: 1.25rem;
             color: var(--text-secondary);
-            margin-bottom: 1rem;
             font-weight: 400;
+            font-family: 'Noto Serif SC', serif;
+            margin-bottom: 1rem;
         }
         
-        .profile-email {
+        .profile-title {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+        
+        .profile-contact {
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            color: var(--primary-light);
+            color: var(--primary-color);
             text-decoration: none;
             font-weight: 500;
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
             transition: var(--transition);
+            background: white;
         }
         
-        .profile-email:hover {
-            color: var(--primary-color);
+        .profile-contact:hover {
+            background: #eff6ff;
+            border-color: var(--primary-color);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow);
         }
         
         /* ===== Section Styling ===== */
@@ -220,7 +185,6 @@
         .section:nth-child(3) { animation-delay: 0.2s; }
         .section:nth-child(4) { animation-delay: 0.3s; }
         .section:nth-child(5) { animation-delay: 0.4s; }
-        .section:nth-child(6) { animation-delay: 0.5s; }
         
         @keyframes fadeInUp {
             to {
@@ -237,6 +201,8 @@
             display: flex;
             align-items: center;
             gap: 0.75rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border-color);
         }
         
         .section-header::before {
@@ -253,17 +219,17 @@
             font-size: 1.125rem;
             font-style: italic;
             color: var(--primary-color);
-            border-left: 4px solid var(--primary-color);
-            padding-left: 1.5rem;
-            margin: 1.5rem 0;
+            text-align: center;
+            margin: 1.5rem 0 2rem;
             font-family: 'Noto Serif SC', serif;
-            background: #eff6ff;
-            padding: 1rem 1.5rem;
-            border-radius: 0 var(--radius) var(--radius) 0;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            border-radius: var(--radius);
+            border-left: 4px solid var(--primary-color);
         }
         
         .bio-content h3 {
-            font-size: 1.125rem;
+            font-size: 1.1rem;
             margin-top: 2rem;
             margin-bottom: 1rem;
             color: var(--text-primary);
@@ -284,27 +250,29 @@
         .recruiting-box {
             background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
             border-left: 4px solid #f59e0b;
-            padding: 1.25rem;
-            margin: 1.5rem 0;
+            padding: 1.5rem;
+            margin: 2rem 0;
             border-radius: 0 var(--radius) var(--radius) 0;
             font-weight: 500;
+            box-shadow: var(--shadow);
         }
         
         .recruiting-box strong {
             color: #92400e;
+            display: block;
+            margin-bottom: 0.75rem;
         }
         
         /* ===== Research Interests ===== */
-        .research-list {
-            list-style: none;
+        .research-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;
+            gap: 1.5rem;
         }
         
-        .research-list li {
+        .research-card {
             background: var(--bg-card);
-            padding: 1.25rem;
+            padding: 1.5rem;
             border-radius: var(--radius);
             border: 1px solid var(--border-color);
             box-shadow: var(--shadow);
@@ -313,7 +281,7 @@
             overflow: hidden;
         }
         
-        .research-list li::before {
+        .research-card::before {
             content: '';
             position: absolute;
             top: 0;
@@ -322,23 +290,29 @@
             height: 4px;
             background: var(--primary-color);
             transform: scaleX(0);
-            transition: var(--transition);
+            transition: transform 0.3s ease;
         }
         
-        .research-list li:hover {
-            transform: translateY(-2px);
+        .research-card:hover {
+            transform: translateY(-4px);
             box-shadow: var(--shadow-lg);
         }
         
-        .research-list li:hover::before {
+        .research-card:hover::before {
             transform: scaleX(1);
         }
         
-        .research-list strong {
+        .research-card h3 {
             color: var(--primary-color);
             font-weight: 600;
-            display: block;
             margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .research-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.5;
         }
         
         /* ===== News Section ===== */
@@ -346,21 +320,20 @@
             list-style: none;
         }
         
-        .news-list li {
-            padding: 1rem 0;
+        .news-item {
+            padding: 1.25rem 0;
             border-bottom: 1px solid var(--border-color);
             display: flex;
-            gap: 1rem;
-            align-items: baseline;
+            gap: 1.5rem;
             transition: var(--transition);
         }
         
-        .news-list li:hover {
+        .news-item:hover {
             padding-left: 0.5rem;
             background: rgba(239, 246, 255, 0.5);
         }
         
-        .news-list li:last-child {
+        .news-item:last-child {
             border-bottom: none;
         }
         
@@ -372,15 +345,15 @@
             flex-shrink: 0;
         }
         
-        .news-list a {
+        .news-content a {
             color: var(--text-primary);
             text-decoration: none;
-            font-weight: 500;
+            font-weight: 600;
             transition: var(--transition);
-            border-bottom: 1px dashed transparent;
+            border-bottom: 1px solid transparent;
         }
         
-        .news-list a:hover {
+        .news-content a:hover {
             color: var(--primary-color);
             border-bottom-color: var(--primary-color);
         }
@@ -389,21 +362,17 @@
             display: inline-block;
             background: #fee2e2;
             color: var(--accent-color);
-            padding: 0.15rem 0.5rem;
+            padding: 0.2rem 0.6rem;
             border-radius: 4px;
             font-size: 0.75rem;
             font-weight: 600;
             margin-left: 0.5rem;
-            white-space: nowrap;
+            vertical-align: middle;
         }
         
         /* ===== Publications ===== */
-        .publication-list {
-            list-style: none;
-        }
-        
-        .publication-list li {
-            padding: 1.25rem;
+        .publication-item {
+            padding: 1.5rem;
             margin-bottom: 1rem;
             background: var(--bg-card);
             border-radius: var(--radius);
@@ -412,7 +381,7 @@
             transition: var(--transition);
         }
         
-        .publication-list li:hover {
+        .publication-item:hover {
             box-shadow: var(--shadow-lg);
             transform: translateX(4px);
             border-left: 3px solid var(--primary-color);
@@ -425,19 +394,28 @@
             padding: 0.25rem 0.75rem;
             border-radius: 4px;
             font-size: 0.8rem;
+            font-weight: 700;
+            margin-right: 0.75rem;
+        }
+        
+        .pub-title {
+            color: var(--text-primary);
+            text-decoration: none;
             font-weight: 600;
-            margin-right: 0.5rem;
+            font-size: 1.05rem;
+            line-height: 1.4;
         }
         
         .venue {
             color: var(--text-secondary);
             font-size: 0.9rem;
+            margin-top: 0.5rem;
             font-style: italic;
         }
         
         .more-link {
             margin-top: 1.5rem;
-            text-align: right;
+            text-align: center;
         }
         
         .more-link a {
@@ -448,54 +426,55 @@
             align-items: center;
             gap: 0.5rem;
             transition: var(--transition);
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--primary-color);
+            border-radius: var(--radius);
         }
         
         .more-link a:hover {
-            gap: 0.75rem;
+            background: var(--primary-color);
+            color: white;
         }
         
         /* ===== Visitor Stats ===== */
-        .stats-container {
+        .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 1rem;
             margin-bottom: 1.5rem;
         }
         
-        .stat-item {
+        .stat-card {
             background: var(--bg-card);
             padding: 1rem;
             border-radius: var(--radius);
             border: 1px solid var(--border-color);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            text-align: center;
+            box-shadow: var(--shadow);
         }
         
         .stat-label {
-            font-weight: 500;
+            display: block;
+            font-size: 0.875rem;
             color: var(--text-secondary);
-            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
         }
         
-        #busuanzi_value_site_pv,
-        #busuanzi_value_site_uv,
-        #visitor-ip {
+        .stat-value {
             font-weight: 700;
             color: var(--primary-color);
             font-family: 'Courier New', monospace;
+            font-size: 1.1rem;
         }
         
-        .location-map {
-            height: 200px;
+        .location-info {
             background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%);
             border-radius: var(--radius);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-secondary);
-            font-style: italic;
+            padding: 1.5rem;
+            text-align: center;
             border: 1px solid var(--border-color);
+            font-size: 0.9rem;
+            color: var(--text-secondary);
         }
         
         /* ===== Footer ===== */
@@ -513,350 +492,279 @@
             text-decoration: none;
         }
         
-        .footer a:hover {
-            text-decoration: underline;
-        }
-        
         /* ===== Mobile Responsive ===== */
-        @media (max-width: 1024px) {
-            .sidebar {
-                transform: translateX(-100%);
-                transition: transform 0.3s ease;
-                box-shadow: var(--shadow-lg);
-            }
-            
-            .sidebar.open {
-                transform: translateX(0);
-            }
-            
-            .content {
-                margin-left: 0;
-            }
-            
-            main {
-                padding: 2rem;
-                max-width: 100%;
-            }
-            
-            .menu-toggle {
-                display: block;
-                position: fixed;
-                top: 1rem;
-                left: 1rem;
-                z-index: 200;
-                background: var(--bg-card);
-                border: 1px solid var(--border-color);
-                padding: 0.75rem;
-                border-radius: var(--radius);
-                cursor: pointer;
-                box-shadow: var(--shadow);
-            }
-        }
-        
         @media (max-width: 768px) {
-            main {
-                padding: 1.5rem;
+            .nav-links {
+                display: none;
             }
             
             .profile-header h1 {
-                font-size: 1.75rem;
+                font-size: 2rem;
             }
             
-            .research-list {
+            .container {
+                padding: 0 1.5rem 3rem;
+            }
+            
+            .research-grid {
                 grid-template-columns: 1fr;
             }
             
-            .stats-container {
+            .stats-grid {
                 grid-template-columns: 1fr;
             }
             
-            .news-list li {
+            .news-item {
                 flex-direction: column;
                 gap: 0.5rem;
             }
         }
         
-        .menu-toggle {
+        /* Mobile Menu Button */
+        .mobile-menu-btn {
             display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
         }
         
-        /* Overlay for mobile menu */
-        .overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 99;
-        }
-        
-        @media (max-width: 1024px) {
-            .overlay.active {
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
                 display: block;
+            }
+            
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: var(--shadow-lg);
+                border-top: 1px solid var(--border-color);
+            }
+            
+            .nav-links.active {
+                display: flex;
             }
         }
     </style>
-<base target="_blank">
 </head>
 <body>
-    <!-- Mobile Menu Toggle -->
-    <button class="menu-toggle" onclick="toggleSidebar()">
-        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M3 12h18M3 6h18M3 18h18"/>
-        </svg>
-    </button>
-    
-    <!-- Overlay for mobile -->
-    <div class="overlay" onclick="toggleSidebar()"></div>
+    <!-- Top Navigation -->
+    <nav class="top-nav">
+        <div class="nav-container">
+            <a href="#" class="nav-brand">Bangbang Ren</a>
+            
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 12h18M3 6h18M3 18h18"/>
+                </svg>
+            </button>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#biography">Biography</a></li>
+                <li><a href="#research">Research</a></li>
+                <li><a href="#news">News</a></li>
+                <li><a href="#publications">Publications</a></li>
+            </ul>
+        </div>
+    </nav>
 
     <div class="container">
-        <!-- Sidebar Navigation -->
-        <nav class="sidebar" id="sidebar">
-            <div class="nav-header">
-                <h2>Bangbang Ren</h2>
-                <div class="nav-title-cn">任棒棒</div>
+        <!-- Profile Header -->
+        <header class="profile-header">
+            <h1>Bangbang Ren</h1>
+            <div class="profile-name-cn">任棒棒</div>
+            <div class="profile-title">国防科技大学 · 副教授 · 硕士生导师</div>
+            <a href="mailto:renbangbang11@nudt.edu.cn" class="profile-contact">
+                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: middle; margin-right: 0.25rem;">
+                    <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                </svg>
+                renbangbang11[at]nudt.edu.cn
+            </a>
+        </header>
+
+        <!-- Short Biography -->
+        <section class="section" id="biography">
+            <h2 class="section-header">Biography</h2>
+            <p class="quote">"Fear no containment, Grow with resilience. (何惧拒止，韧性生长)"</p>
+           
+            <div class="bio-content">
+                <h3>任棒棒 | Bangbang Ren</h3>
+                <p>
+                    国防科技大学副教授，硕士生导师，科协青年托举人才，
+                    CCF分布式计算与系统专委执行委员/网络与系统安全专委执行委员/指控学会C4ISR理论与技术专委执行委员。
+                </p>
+                <p>
+                    <strong>研究领域：</strong>主要领域为网络化分布式系统、AI赋能体系设计、智能决策等方向，在相关研究领域共发表录用论文50余篇，包括一流国际学术期刊和会INFOCOM, ICDCS, IEEE TPDS, TON, TMC, JSAC等，授权发明专利20余项。
+                </p>
+                <p>
+                    <strong>奖项荣誉：</strong>获得CCF自然科学奖二等奖、发明协会创业奖创新奖一等奖。
+                </p>
+                <p>
+                    <strong>学生培养：</strong>指导/联合指导多位硕士和博士同学发表录用CCF A类和CCF B类国际学术会议期刊论文多篇。
+                </p>
+                
+                <div class="recruiting-box">
+                    <strong>招生信息 | Join Our Team</strong>
+                    本人招收研究生(博士生(协助指导)和硕士生)、本科实习生、博士后以及科研助理(长期开放)，对网络化分布式系统、AI赋能体系设计、智能决策等方向感兴趣的同学，欢迎与我联系。<br><br>
+                    本团队科研经费稳定，科研氛围轻松，欢迎联系加入！要求入组同学为人正直，沟通坦诚，并对本团队研究方向感兴趣、踏实勤奋、有一定自驱力和较好抗压能力。
+                </div>
             </div>
-            
-            <ul class="nav-menu">
-                <li><a href="#home" class="active" onclick="smoothScroll('home')">Home</a></li>
-                <li><a href="#biography" onclick="smoothScroll('biography')">Biography</a></li>
-                <li><a href="#research" onclick="smoothScroll('research')">Research</a></li>
-                <li><a href="#news" onclick="smoothScroll('news')">News</a></li>
-                <li><a href="#publications" onclick="smoothScroll('publications')">Publications</a></li>
-                <li><a href="publications.html">All Publications</a></li>
+        </section>
+
+        <!-- Research Interests -->
+        <section class="section" id="research">
+            <h2 class="section-header">Research Interests</h2>
+            <div class="research-grid">
+                <div class="research-card">
+                    <h3>Networked Distributed System</h3>
+                    <p>大规模分布式系统架构与优化，包括分布式计算和网络协议设计</p>
+                </div>
+                <div class="research-card">
+                    <h3>AI-Augmented SoS</h3>
+                    <p>AI赋能的体系设计，系统之系统(System of Systems)的智能增强方法</p>
+                </div>
+                <div class="research-card">
+                    <h3>Intelligent Decision</h3>
+                    <p>智能决策与深度强化学习，多目标优化与自适应决策系统</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- News Section -->
+        <section class="section" id="news">
+            <h2 class="section-header">Recent News</h2>
+            <ul class="news-list">
+                <li class="news-item">
+                    <span class="news-date">2026.02</span>
+                    <div class="news-content">
+                        <a href="#">Multi-objective optimization of network disintegration via deep reinforcement learning</a> 
+                        <span class="ccf-tag">RESS 自动化学会A+</span>
+                    </div>
+                </li>
+                <li class="news-item">
+                    <span class="news-date">2026.01</span>
+                    <div class="news-content">
+                        招募2026级硕士生、博士生及本科实习生，欢迎对网络化分布式系统和智能决策感兴趣的同学联系。
+                    </div>
+                </li>
             </ul>
-            
-            <div class="sidebar-footer">
-                <div class="contact-sidebar">
-                    <p><strong>Email:</strong><br>renbangbang11[at]nudt.edu.cn</p>
-                    <p><strong>Affiliation:</strong><br>National University of Defense Technology</p>
-                </div>
-                <p style="margin-top: 1rem; font-size: 0.75rem; opacity: 0.7;">
-                    &copy; 2026 Bangbang Ren
-                </p>
+        </section>
+
+        <!-- Selected Publications -->
+        <section class="section" id="publications">
+            <h2 class="section-header">Selected Publications</h2>
+            <div class="publication-item">
+                <span class="venue-tag">RESS'26</span>
+                <a href="#" class="pub-title">Multi-objective optimization of network disintegration via deep reinforcement learning</a>
+                <div class="venue">Reliability Engineering & System Safety (RESS), 自动化学会A+, 2026</div>
             </div>
-        </nav>
-
-        <!-- Main Content -->
-        <main class="content" id="home">
-            <!-- Profile Header -->
-            <header class="profile-header">
-                <h1>Bangbang Ren <span style="font-weight: 400; color: var(--text-secondary);">(任棒棒)</span></h1>
-                <div class="profile-title">国防科技大学 · 副教授 · 硕士生导师</div>
-                <a href="mailto:renbangbang11@nudt.edu.cn" class="profile-email">
-                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: middle;">
-                        <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-                    </svg>
-                    renbangbang11[at]nudt.edu.cn
+            
+            <p class="more-link">
+                <a href="https://scholar.google.com/citations?user=x1xr6r4AAAAJ&hl=zh-CN&oi=ao">
+                    查看全部论文 →
                 </a>
-            </header>
+            </p>
+        </section>
 
-            <!-- Short Biography -->
-            <section class="section" id="biography">
-                <h2 class="section-header">Short Biography</h2>
-                <p class="quote">"Fear no containment, Grow with resilience. (何惧拒止，韧性生长)"</p>
-               
-                <div class="bio-content">
-                    <h3>中文简介</h3>
-                    <p>
-                        任棒棒，国防科技大学副教授，硕士生导师，科协青年托举人才，
-                        CCF分布式计算与系统专委执行委员/网络与系统安全专委执行委员/指控学会C4ISR理论与技术专委执行委员。
-                    </p>
-                    <p>
-                        <strong>研究领域：</strong>主要领域为网络化分布式系统、AI赋能体系设计、智能决策等方向，在相关研究领域共发表录用论文50余篇，包括一流国际学术期刊和会INFOCOM, ICDCS, IEEE TPDS, TON, TMC, JSAC等，授权发明专利20余项。
-                    </p>
-                    <p>
-                        <strong>奖项荣誉：</strong>获得CCF自然科学奖二等奖、发明协会创业奖创新奖一等奖。
-                    </p>
-                    <p>
-                        <strong>学生培养：</strong>指导/联合指导多位硕士和博士同学发表录用CCF A类和CCF B类国际学术会议期刊论文多篇。
-                    </p>
-                    
-                    <div class="recruiting-box">
-                        <strong>I am recruiting PhD, Master and Undergraduate students.</strong> If interested, please feel free to drop me an email.
-                        <br><br>
-                        本人招收研究生(博士生(协助指导)和硕士生)、本科实习生、博士后以及科研助理(长期开放)，对网络化分布式系统、AI赋能体系设计、智能决策等方向感兴趣的同学，欢迎与我联系(renbangbang11[at]nudt.edu.cn)。本团队科研经费稳定，科研氛围轻松，欢迎联系加入！要求入组同学为人正直，沟通坦诚，并对本团队研究方向感兴趣、踏实勤奋、有一定自驱力和较好抗压能力。
-                    </div>
+        <!-- Visitor Statistics -->
+        <section class="section">
+            <h2 class="section-header">Visitor Statistics</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-label">Total Visits</span>
+                    <span id="busuanzi_value_site_pv" class="stat-value">--</span>
                 </div>
-            </section>
-
-            <!-- Research Interests -->
-            <section class="section" id="research">
-                <h2 class="section-header">Research Interests</h2>
-                <ul class="research-list">
-                    <li>
-                        <strong>Networked Distributed System</strong>
-                        <span style="font-size: 0.9rem; color: var(--text-secondary); display: block; margin-top: 0.25rem;">网络化分布式系统</span>
-                    </li>
-                    <li>
-                        <strong>AI-Augmented SoS</strong>
-                        <span style="font-size: 0.9rem; color: var(--text-secondary); display: block; margin-top: 0.25rem;">AI赋能的体系设计</span>
-                    </li>
-                    <li>
-                        <strong>Intelligent Decision</strong>
-                        <span style="font-size: 0.9rem; color: var(--text-secondary); display: block; margin-top: 0.25rem;">智能决策与深度强化学习</span>
-                    </li>
-                </ul>
-            </section>
-    
-            <!-- News Section -->
-            <section class="section" id="news">
-                <h2 class="section-header">Recent News</h2>
-                <ul class="news-list">
-                    <li>
-                        <span class="news-date">02/2026</span>
-                        <div>
-                            "<a href="#">Multi-objective optimization of network disintegration via deep reinforcement learning</a>" is accepted by RESS<span class="ccf-tag">自动化学会A+</span>
-                        </div>
-                    </li>
-                    <li>
-                        <span class="news-date">01/2026</span>
-                        <div>
-                            招募2026级硕士生、博士生及本科实习生，欢迎对网络化分布式系统和智能决策感兴趣的同学联系。
-                        </div>
-                    </li>
-                </ul>
-            </section>
-
-            <!-- Selected Publications -->
-            <section class="section" id="publications">
-                <h2 class="section-header">Selected Recent Publications</h2>
-                <ul class="publication-list">
-                    <li>
-                        <span class="venue-tag">RESS'26</span>
-                        <a href="#" style="color: var(--text-primary); text-decoration: none; font-weight: 600;">Multi-objective optimization of network disintegration via deep reinforcement learning</a>
-                        <div class="venue" style="margin-top: 0.5rem;">
-                            Reliability Engineering & System Safety (RESS), 自动化学会A+, 2026
-                        </div>
-                    </li>
-                </ul>
-                <p class="more-link">
-                    <a href="https://scholar.google.com/citations?user=x1xr6r4AAAAJ&hl=zh-CN&oi=ao">
-                        View All Publications →
-                    </a>
-                </p>
-            </section>
-
-            <!-- Visitor Statistics -->
-            <section class="section visitor-stats">
-                <h2 class="section-header">Visitor Statistics</h2>
-                <div class="stats-container">
-                    <div class="stat-item">
-                        <span class="stat-label">Total Visits</span>
-                        <span id="busuanzi_container_site_pv">
-                            <span id="busuanzi_value_site_pv">--</span>
-                        </span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-label">Unique Visitors</span>
-                        <span id="busuanzi_container_site_uv">
-                            <span id="busuanzi_value_site_uv">--</span>
-                        </span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-label">Your IP</span>
-                        <span id="visitor-ip">--</span>
-                    </div>
+                <div class="stat-card">
+                    <span class="stat-label">Unique Visitors</span>
+                    <span id="busuanzi_value_site_uv" class="stat-value">--</span>
                 </div>
-                <div id="location-map" class="location-map">
-                    <span>🌍 访客分布地图 (静态示意)</span>
+                <div class="stat-card">
+                    <span class="stat-label">Your Location</span>
+                    <span id="visitor-location" class="stat-value">--</span>
                 </div>
-            </section>
+            </div>
+            <div id="location-info" class="location-info">
+                正在获取访客信息...
+            </div>
+        </section>
 
-            <!-- Footer -->
-            <footer class="footer">
-                <p>Page generated 2026-04-01 by jemdoc.</p>
-                <p style="margin-top: 0.5rem;">
-                    <span id="busuanzi_container_site_pv" style="display:none">
-                        Total: <span id="busuanzi_value_site_pv"></span> | Visitors: <span id="busuanzi_value_site_uv"></span>
-                    </span>
-                </p>
-            </footer>
-        </main>
+        <!-- Footer -->
+        <footer class="footer">
+            <p>© 2026 Bangbang Ren | National University of Defense Technology</p>
+            <p style="margin-top: 0.5rem; font-size: 0.8rem;">
+                Page generated by jemdoc | Last updated: 2026-04-09
+            </p>
+        </footer>
     </div>
 
     <script>
-        // Mobile Sidebar Toggle
-        function toggleSidebar() {
-            const sidebar = document.getElementById('sidebar');
-            const overlay = document.querySelector('.overlay');
-            sidebar.classList.toggle('open');
-            overlay.classList.toggle('active');
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
         }
         
-        // Smooth Scrolling
-        function smoothScroll(targetId) {
-            const element = document.getElementById(targetId);
-            if (element) {
-                element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                // Close sidebar on mobile after click
-                if (window.innerWidth <= 1024) {
-                    toggleSidebar();
+        // Get Visitor IP and Location
+        fetch('https://ipapi.co/json/')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('visitor-location').textContent = data.city || data.country_name;
+                document.getElementById('location-info').innerHTML = `
+                    <div style="display: flex; align-items: center; justify-content: center; gap: 1rem;">
+                        <div style="font-size: 1.5rem;">📍</div>
+                        <div style="text-align: left;">
+                            <div style="font-weight: 600; color: var(--text-primary);">${data.city}, ${data.country_name}</div>
+                            <div style="font-size: 0.8rem; margin-top: 0.25rem;">${data.org || ''} | IP: ${data.ip}</div>
+                        </div>
+                    </div>
+                `;
+            })
+            .catch(error => {
+                document.getElementById('visitor-location').textContent = 'Private';
+                document.getElementById('location-info').textContent = '无法获取位置信息 (Private Mode)';
+            });
+            
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Close mobile menu if open
+                    document.getElementById('navLinks').classList.remove('active');
                 }
-            }
-        }
+            });
+        });
         
-        // Update Active Navigation
+        // Highlight active section on scroll
         window.addEventListener('scroll', () => {
-            const sections = document.querySelectorAll('.section, .profile-header');
-            const navLinks = document.querySelectorAll('.nav-menu a');
+            const sections = document.querySelectorAll('.section');
+            const navLinks = document.querySelectorAll('.nav-links a');
             
             let current = '';
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
                 if (pageYOffset >= sectionTop - 100) {
                     current = section.getAttribute('id');
                 }
             });
             
             navLinks.forEach(link => {
-                link.classList.remove('active');
+                link.style.color = '';
                 if (link.getAttribute('href') === '#' + current) {
-                    link.classList.add('active');
+                    link.style.color = 'var(--primary-color)';
                 }
             });
-        });
-        
-        // Get Visitor IP (using ipapi.co)
-        fetch('https://ipapi.co/json/')
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById('visitor-ip').textContent = data.ip;
-                const location = `${data.city}, ${data.country_name}`;
-                document.querySelector('.location-map').innerHTML = `
-                    <div style="text-align: center;">
-                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">📍</div>
-                        <div style="font-weight: 600; color: var(--text-primary);">${location}</div>
-                        <div style="font-size: 0.875rem; margin-top: 0.25rem;">${data.org || ''}</div>
-                    </div>
-                `;
-            })
-            .catch(error => {
-                document.getElementById('visitor-ip').textContent = 'Private';
-                document.querySelector('.location-map').innerHTML = '<span>无法获取位置信息</span>';
-            });
-            
-        // Intersection Observer for scroll animations
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.1
-        };
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-        
-        document.querySelectorAll('.section').forEach((section) => {
-            observer.observe(section);
         });
     </script>
 </body>
